@@ -70,7 +70,7 @@ The application should now be accessible at http://localhost:8000.
 ### Feedback & Support
 Your input matters, and I'm ready to help address any inquiries or feedback you may have. Your contributions are essential for refining the project and enhancing the overall user experience. Don't hesitate to get in touch with me:
 
-Feel free to share your insights, recommendations, or suggestions for continuous improvement. If you encounter any challenges or require assistance, please [create a new GitHub issue](https://github.com/imprvhub/ecommerce_data_analysis/issues/new). Be sure to provide a detailed description of your issue to facilitate prompt and precise support.
+Feel free to share your insights, recommendations, or suggestions for continuous improvement. If you encounter any challenges or require assistance, please [create a new GitHub issue](https://github.com/imprvhub/ecommerce-data-analysis/issues/new). Be sure to provide a detailed description of your issue to facilitate prompt and precise support.
 
 ### License
 For more information regarding this topic please read the following [User Agreement Section.](https://ecommerce-data-analysis.azurewebsites.net/user_agreements.html)
