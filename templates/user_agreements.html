@@ -121,8 +121,7 @@
             </p>
         </div>
         </section>
-          <footer>
-            
+        <footer>
             <div class="footer-menu">
                 <ul>
                     <button data-translate="Back" id="close-button" onclick="closeHtmlAndRedirect();">Back</button>
@@ -133,12 +132,7 @@
 
         <script>        
             function closeHtmlAndRedirect() {
-                try {
-                    closeHtml();
-                    window.location.href = "/";
-                } catch (error) {
-                    console.error("Error al cerrar HTML:", error);
-                }
+                window.location.href = "/";
             }
         
             function toggleDarkMode() {
@@ -162,13 +156,6 @@
             }
         
             document.getElementById('languageDropdown').addEventListener('change', changeLanguage);
-        
-            const mainItems = document.querySelectorAll('.main-item');
-            mainItems.forEach((mainItem) => {
-                mainItem.addEventListener('click', () => {
-                    mainItem.classList.toggle('main-item--open');
-                });
-            });
         </script>
 </body>
 </html>
