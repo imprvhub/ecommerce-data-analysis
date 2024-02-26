@@ -105,6 +105,38 @@ document.addEventListener('DOMContentLoaded', function () {
     graphContainer.appendChild(h3Element);
 });
 
+function closeHtmlAndRedirect() {
+    window.location.href = "/";
+}
+
+function changeLanguage() {
+    const languageDropdown = document.getElementById('languageDropdown');
+    const selectedLanguage = languageDropdown.value;
+
+    translatePage(selectedLanguage);
+}
+
+
+function changeLanguage() {
+    const languageDropdown = document.getElementById('languageDropdown');
+    const selectedLanguage = languageDropdown.value;
+
+    translatePage(selectedLanguage);
+}
+
+document.getElementById('languageDropdown').addEventListener('change', changeLanguage);
+
+
+
+const mainItems = document.querySelectorAll('.main-item');
+
+mainItems.forEach((mainItem) => {
+    mainItem.addEventListener('click', () => {
+        mainItem.classList.toggle('main-item--open');
+    });
+});           
+
+
 document.addEventListener('DOMContentLoaded', function () {
     var accordionLinks = document.querySelectorAll('.accordion-container a');
 

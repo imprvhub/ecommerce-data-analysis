@@ -129,33 +129,7 @@
             </div>
             <p data-translate="© 2024 Iván Luna. Software Developer.">© 2024 Iván Luna. Software Developer.</p>
         </footer>
-
-        <script>        
-            function closeHtmlAndRedirect() {
-                window.location.href = "/";
-            }
-        
-            function toggleDarkMode() {
-                const body = document.body;
-                const darkModeIcon = document.getElementById('dark-mode-icon');
-                const lightModeIcon = document.getElementById('light-mode-icon');
-            
-                body.classList.toggle('dark-mode');
-            
-                const isDarkMode = body.classList.contains('dark-mode');
-            
-                darkModeIcon.style.display = isDarkMode ? 'inline' : 'none';
-                lightModeIcon.style.display = isDarkMode ? 'none' : 'inline';
-            }
-        
-            function changeLanguage() {
-                const languageDropdown = document.getElementById('languageDropdown');
-                const selectedLanguage = languageDropdown.value;
-        
-                translatePage(selectedLanguage);
-            }
-        
-            document.getElementById('languageDropdown').addEventListener('change', changeLanguage);
-        </script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
 </body>
 </html>
