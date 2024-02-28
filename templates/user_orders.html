@@ -9,226 +9,229 @@
     <title>E-Commerce Data Analysis - ivanluna.dev</title>
 </head>
 <body>
-    <div class="navbar" style="background: linear-gradient(to right, rgba(0, 10, 30, 0.896), rgba(14, 102, 200, 0.422), rgba(0, 10, 30, 0.896));">
+    <div id="static-container">
+        <div class="navbar" style="background: linear-gradient(to right, rgba(0, 10, 30, 0.896), rgba(14, 102, 200, 0.422), rgba(0, 10, 30, 0.896));">
+            <h1 data-translate="E-Commerce Data Analysis">E-Commerce Data Analysis</h1>
+            <button id="toggle-button" onclick="toggleDarkMode()">
+                <img id="dark-mode-icon" class="darkicon" src="{{ url_for('static', filename='images/dark-mode-toggle-icon.svg') }}" alt="Dark Mode Icon">
+                <img id="light-mode-icon" class="lighticon" src="{{ url_for('static', filename='images/light-mode-toggle-icon.svg') }}" alt="Light Mode Icon">
+            </button>
 
-        <h1 data-translate="E-Commerce Data Analysis">E-Commerce Data Analysis</h1>
-        <button id="toggle-button" onclick="toggleDarkMode()">
-            <img id="dark-mode-icon" class="darkicon" src="{{ url_for('static', filename='images/dark-mode-toggle-icon.svg') }}" alt="Dark Mode Icon">
-            <img id="light-mode-icon" class="lighticon" src="{{ url_for('static', filename='images/light-mode-toggle-icon.svg') }}" alt="Light Mode Icon">
-        </button>
-
-        <label for="languageDropdown">Choose Language:</label>
-        <select id="languageDropdown" onchange="changeLanguage()">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="pt">Português</option>
-            <option value="de">Deutsch</option>
-        </select>
-    
-            <div class="accordion-container">
-                <div class="main-item">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
-                    fill="none" stroke-linecap="round" stroke-linejoin="round"
-                >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
-                    <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
-                    <path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
-                    <path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
-                    <path d="M3 11c0 .888 .772 1.45 2 2"></path>
-                </svg>
-                <label id="labeldata" data-translate="Dashboard">Dashboard<label>                
-                </svg> 
+            <label for="languageDropdown">Choose Language:</label>
+            <select id="languageDropdown" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="pt">Português</option>
+                <option value="de">Deutsch</option>
+            </select>
+        
+                <div class="accordion-container">
+                    <div class="main-item">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
+                        fill="none" stroke-linecap="round" stroke-linejoin="round"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
+                        <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
+                        <path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
+                        <path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
+                        <path d="M3 11c0 .888 .772 1.45 2 2"></path>
+                    </svg>
+                    <label id="labeldata" data-translate="Dashboard">Dashboard</label>           
+                    </svg> 
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="line-vertical"></div>
+                            <div class="line-horizontal"></div>
+                            <a href="#total-revenue" class="section" data-translate="Total Revenue Per Store">
+                                Total Revenue Per Store
+                            </a>
+                        </li>
+                        <li>
+                            <div class="line-vertical"></div>
+                            <div class="line-horizontal"></div>
+                            <a href="#top-products" class="section" data-translate="Top Products Sold">
+                                Top Products Sold
+                            </a>
+                        </li>
+                        <li>
+                            <div class="line-vertical"></div>
+                            <div class="line-horizontal"></div>
+                            <a href="#total-revenue-country" class="section" data-translate="Total Revenue Per Country">
+                                Total Revenue Per Country
+                            </a>
+                        </li>
+                        <li>
+                            <div class="line-vertical"></div>
+                            <div class="line-horizontal"></div>
+                            <a href="#howitworks" class="section" data-translate="How It Works">
+                                How It Works
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <ul>
-                    <li>
-                        <div class="line-vertical"></div>
-                        <div class="line-horizontal"></div>
-                        <a href="#total-revenue" class="section" data-translate="Total Revenue Per Store">
-                            Total Revenue Per Store
-                        </a>
-                    </li>
-                    <li>
-                        <div class="line-vertical"></div>
-                        <div class="line-horizontal"></div>
-                        <a href="#top-products" class="section" data-translate="Top Products Sold">
-                            Top Products Sold
-                        </a>
-                    </li>
-                    <li>
-                        <div class="line-vertical"></div>
-                        <div class="line-horizontal"></div>
-                        <a href="#total-revenue-country" class="section" data-translate="Total Revenue Per Country">
-                            Total Revenue Per Country
-                        </a>
-                    </li>
-                    <li>
-                        <div class="line-vertical"></div>
-                        <div class="line-horizontal"></div>
-                        <a href="#howitworks" class="section" data-translate="How It Works">
-                            How It Works
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>    
-        <div class="table-container">
+            </div>    
+        </div>
+        <div id="dynamic-content-container">
+            <div class="table-container animated-background">
 
-        <table id="table1" border="1">
-            <tr>
-                <th data-translate="Profile">Profile</th>
-                <th data-translate="ID">ID</th>
-                <th data-translate="Username">Username</th>
-                <th data-translate="Email">Email</th>
-                <th data-translate="Registration Method">Registration <br> Method</th>
-                <th data-translate="Password Enabled">Password <br> Enabled</th>
-                <th data-translate="Last Sign-In At (UTC)">Last Sign-In At <br> (UTC)</th>
-                <th data-translate="Store ID">Store ID</th>
-                <th data-translate="Store Name">Store Name</th>
-                <th data-translate="Product ID">Product ID</th>
-                <th data-translate="Product Name">Product Name</th>
-                <th data-translate="Product Created At (UTC)">Product Created At <br> (UTC)</th>
-                <th data-translate="Product Updated At (UTC)">Product Updated At <br> (UTC)</th>
-                <th data-translate="Price (USD)">Price (USD)</th>
-                <th data-translate="Is Paid">Is Paid</th>
-                <th data-translate="Order ID">Order ID</th>
-                <th data-translate="Customer Address">Customer Address</th>
-                <th data-translate="Customer Phone">Customer Phone</th>
-                <th data-translate="Order Created At (UTC)">Order Created At <br> (UTC)</th>
-                <th data-translate="Order Updated At (UTC)">Order Updated At <br> (UTC)</th>
-            </tr>
-            {% for order in orders_data %}
-            <tr>
-                <td>
-                    <img src="{{ additional_user_info_dict[order.user_id][0]['Avatar'] if additional_user_info_dict[order.user_id][0]['Avatar'] else '/static/default_avatar.png' }}" alt="Avatar" style="border-radius: 35%; width: 50px; height: 50px;">
-                </td>
-                <td>{{ order.user_id if order.user_id else "Not Specified" }}</td>
-                <td>{{ additional_user_info_dict[order.user_id][0].get("Name", "Not Specified") }}</td>
-                <td>{{ order.user_email if order.user_email else "Not Specified" }}</td>
-                <td>{{ additional_user_info_dict[order.user_id][0].get("Login Method", "Not Specified") }}</td>
-                <td>{{ "Yes" if additional_user_info_dict[order.user_id][0].get("Password Enabled", False) else "No" }}</td>
-                <td>{{ additional_user_info_dict[order.user_id][0].get("Last Sign-In At (UTC)", "Not Specified") }}</td>
-                <td>{{ order.store_id if order.store_id else "Not Specified" }}</td>
-                <td>{{ order.store_name if order.store_name else "Not Specified" }}</td>
-                <td>{{ order.product_id if order.product_id else "Not Specified" }}</td>
-                <td>{{ order.product_name if order.product_name else "Not Specified" }}</td>
-                <td>{{ order.product_created_at_UTC.strftime('%Y-%m-%d %H:%M:%S') if order.product_created_at_UTC else "Not Specified" }}</td>
-                <td>{{ order.product_updated_at_UTC.strftime('%Y-%m-%d %H:%M:%S') if order.product_updated_at_UTC else "Not Specified" }}</td>   
-                <td>{{ "{:.2f}".format(order.price_USD) if order.price_USD else "Not Specified" }}</td>
-                <td>{{ "Yes" if order.is_paid else "No" }}</td>
-                <td>{{ order.order_id if order.order_id else "Not Specified" }}</td>
-                <td>{{ order.address if order.address else "Not Specified" }}</td>
-                <td>{{ order.phone if order.phone else "Not Specified" }}</td>
-                <td>{{ order.created_at_UTC.strftime('%Y-%m-%d %H:%M:%S') if order.created_at_UTC else "Not Specified" }}</td>
-                <td>{{ order.updated_at_UTC.strftime('%Y-%m-%d %H:%M:%S') if order.updated_at_UTC else "Not Specified" }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        </div>
-            <h2 id="total-revenue" data-translate="Total Revenue Per Store">Total Revenue Per Store</h2>
-        <div class="table-container2">
-        <table border="1">
-            <tr>
-                <th data-translate="User Name">User Name</th>
-                <th data-translate="Store Name">Store Name</th>
-                <th data-translate="Total Revenue (USD)">Total Revenue (USD)</th>
-            </tr>
-            {% for revenue_info in store_revenues_list %}
-            <tr>
-                <td>{{ revenue_info.user_name }}</td>
-                <td>{{ revenue_info.store_name }}</td>
-                <td>{{ "{:.2f}".format(revenue_info.revenue) }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        <br>
-        <br>
-        <div class="graph-container1">
-            <img id="graph-dark" src='data:image/png;base64,{{ graph_dark }}' alt='Ingresos por Tienda' style="display: none;">
-            <img id="graph-light" src='data:image/png;base64,{{ graph_light }}' alt='Ingresos por Tienda' style="display: block;">
-        </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <h2 id="top-products" data-translate="Top Products Sold">Top Products Sold</h2>
-        <div class="table-container3">
-            <table border="1">
+            <table id="table1" border="1">
                 <tr>
+                    <th data-translate="Profile">Profile</th>
+                    <th data-translate="ID">ID</th>
+                    <th data-translate="Username">Username</th>
+                    <th data-translate="Email">Email</th>
+                    <th data-translate="Registration Method">Registration <br> Method</th>
+                    <th data-translate="Password Enabled">Password <br> Enabled</th>
+                    <th data-translate="Last Sign-In At (UTC)">Last Sign-In At <br> (UTC)</th>
+                    <th data-translate="Store ID">Store ID</th>
                     <th data-translate="Store Name">Store Name</th>
+                    <th data-translate="Product ID">Product ID</th>
                     <th data-translate="Product Name">Product Name</th>
-                    <th data-translate="Sales Percentage (In Store)">Sales Percentage (In Store)</th>
-                    <th data-translate="Total Sales">Total Sales</th>
+                    <th data-translate="Product Created At (UTC)">Product Created At <br> (UTC)</th>
+                    <th data-translate="Product Updated At (UTC)">Product Updated At <br> (UTC)</th>
+                    <th data-translate="Price (USD)">Price (USD)</th>
+                    <th data-translate="Is Paid">Is Paid</th>
+                    <th data-translate="Order ID">Order ID</th>
+                    <th data-translate="Customer Address">Customer Address</th>
+                    <th data-translate="Customer Phone">Customer Phone</th>
+                    <th data-translate="Order Created At (UTC)">Order Created At <br> (UTC)</th>
+                    <th data-translate="Order Updated At (UTC)">Order Updated At <br> (UTC)</th>
                 </tr>
-                {% for product_info in top_products_list %}
+                {% for order in orders_data %}
                 <tr>
-                    <td>{{ product_info.store_name }}</td>
-                    <td>{{ product_info.product_name }}</td>
-                    <td>{{ product_info.sales_percentage }}%</td>
-                    <td>{{ product_info.total_sales }}</td>
+                    <td>
+                        <img src="{{ additional_user_info_dict[order.user_id][0]['Avatar'] if additional_user_info_dict[order.user_id][0]['Avatar'] else '/static/default_avatar.png' }}" alt="Avatar" style="border-radius: 35%; width: 50px; height: 50px;">
+                    </td>
+                    <td>{{ order.user_id if order.user_id else "Not Specified" }}</td>
+                    <td>{{ additional_user_info_dict[order.user_id][0].get("Name", "Not Specified") }}</td>
+                    <td>{{ order.user_email if order.user_email else "Not Specified" }}</td>
+                    <td>{{ additional_user_info_dict[order.user_id][0].get("Login Method", "Not Specified") }}</td>
+                    <td>{{ "Yes" if additional_user_info_dict[order.user_id][0].get("Password Enabled", False) else "No" }}</td>
+                    <td>{{ additional_user_info_dict[order.user_id][0].get("Last Sign-In At (UTC)", "Not Specified") }}</td>
+                    <td>{{ order.store_id if order.store_id else "Not Specified" }}</td>
+                    <td>{{ order.store_name if order.store_name else "Not Specified" }}</td>
+                    <td>{{ order.product_id if order.product_id else "Not Specified" }}</td>
+                    <td>{{ order.product_name if order.product_name else "Not Specified" }}</td>
+                    <td>{{ order.product_created_at_UTC.strftime('%Y-%m-%d %H:%M:%S') if order.product_created_at_UTC else "Not Specified" }}</td>
+                    <td>{{ order.product_updated_at_UTC.strftime('%Y-%m-%d %H:%M:%S') if order.product_updated_at_UTC else "Not Specified" }}</td>   
+                    <td>{{ "{:.2f}".format(order.price_USD) if order.price_USD else "Not Specified" }}</td>
+                    <td>{{ "Yes" if order.is_paid else "No" }}</td>
+                    <td>{{ order.order_id if order.order_id else "Not Specified" }}</td>
+                    <td>{{ order.address if order.address else "Not Specified" }}</td>
+                    <td>{{ order.phone if order.phone else "Not Specified" }}</td>
+                    <td>{{ order.created_at_UTC.strftime('%Y-%m-%d %H:%M:%S') if order.created_at_UTC else "Not Specified" }}</td>
+                    <td>{{ order.updated_at_UTC.strftime('%Y-%m-%d %H:%M:%S') if order.updated_at_UTC else "Not Specified" }}</td>
                 </tr>
                 {% endfor %}
             </table>
-            <br>
-            <br>
-            <div class="graph-container2">
-                <img id="data_products_dark" src='data:image/png;base64,{{ data_products_dark }}' alt='Productos más vendidos' style="display: none;">
-                <img id="data_products_light" src='data:image/png;base64,{{ data_products_light }}' alt='Productos más vendidos' style="display: block;">
             </div>
-        </div>
-        <br>
-        <br>
-        <h2 id="total-revenue-country" data-translate="Total Revenue Per Country">Total Revenue Per Country</h2>
-        <div class="table-container4">
+                <h2 id="total-revenue" data-translate="Total Revenue Per Store">Total Revenue Per Store</h2>
+            <div class="table-container2 animated-background">
             <table border="1">
                 <tr>
-                    <th data-translate="Country">Country</th>
-                    <th data-translate="Order Count">Order Count</th>
-                    <th data-translate="Percentage">Percentage</th>
-                    <th data-translate="Total Revenue (USD)">Total Revenue (USD)</th> 
+                    <th data-translate="User Name">User Name</th>
+                    <th data-translate="Store Name">Store Name</th>
+                    <th data-translate="Total Revenue (USD)">Total Revenue (USD)</th>
                 </tr>
-                {% for country_info in country_list %}
+                {% for revenue_info in store_revenues_list %}
                 <tr>
-                    <td>{{ country_info.COUNTRY }}</td>
-                    <td>{{ country_info['ORDER COUNT'] }}</td>
-                    <td>{{ country_info.PERCENTAGE }}%</td>
-                    <td>{{ country_info['TOTAL REVENUE (USD)'] }}</td>
+                    <td>{{ revenue_info.user_name }}</td>
+                    <td>{{ revenue_info.store_name }}</td>
+                    <td>{{ "{:.2f}".format(revenue_info.revenue) }}</td>
                 </tr>
                 {% endfor %}
             </table>
             <br>
             <br>
+            <div class="graph-container1">
+                <img id="graph-dark" src='data:image/png;base64,{{ graph_dark }}' style="display: none;">
+                <img id="graph-light" src='data:image/png;base64,{{ graph_light }}' style="display: block;">
+            </div>
+            </div>
             <br>
-            <div class="graph-container4">
-                <img id="country-graph-dark" src='data:image/png;base64,{{ country_graph_dark }}' alt='Ingresos por País (Modo Oscuro)' style="display: none;">
-                <img id="country-graph-light" src='data:image/png;base64,{{ country_graph_light }}' alt='Ingresos por País (Modo Claro)' style="display: block;">
-            </div>
-        </div>
-        <br>
-        <br>
-        <section id="howitworks">
-            <h2 data-translate="How It Works">How It Works</h2>
-                <div style="max-width: 800px; margin: auto;">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/jNLWl_Nu3KE" frameborder="0" allowfullscreen title="Video: How It Works"></iframe>
+            <br>
+            <br>
+            <h2 id="top-products" data-translate="Top Products Sold">Top Products Sold</h2>
+            <div class="table-container3 animated-background">
+                <table border="1">
+                    <tr>
+                        <th data-translate="Store Name">Store Name</th>
+                        <th data-translate="Product Name">Product Name</th>
+                        <th data-translate="Sales Percentage (In Store)">Sales Percentage (In Store)</th>
+                        <th data-translate="Total Sales">Total Sales</th>
+                    </tr>
+                    {% for product_info in top_products_list %}
+                    <tr>
+                        <td>{{ product_info.store_name }}</td>
+                        <td>{{ product_info.product_name }}</td>
+                        <td>{{ product_info.sales_percentage }}%</td>
+                        <td>{{ product_info.total_sales }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                <br>
+                <div class="graph-container2">
+                    <img id="data_products_dark" src='data:image/png;base64,{{ data_products_dark }}'  style="display: none;">
+                    <img id="data_products_light" src='data:image/png;base64,{{ data_products_light }}'  style="display: block;">
                 </div>
-                
-            </section>
-        </section>
-
-        <footer>
-            <button data-translate="youtube" id="close-button" onclick="window.open('https://www.youtube.com/watch?v=jNLWl_Nu3KE&start=0', '_blank');">Watch on Youtube</button>
-            <div className="footer-menu">
-                <ul>
-                    <li data-translate="ivanluna.dev"><a href="https://ivanluna.dev" target="_self">ivanluna.dev</a></li>
-                    <a data-translate="User Agreements" href="user_agreements.html" target="_self">User Agreements</a>
-
-                </ul>
             </div>
-            <p data-translate="© 2024 Iván Luna. Software Developer.">© 2024 Iván Luna. Software Developer.</p>
-        </footer>
+            <br>
+            <br>
+            <h2 id="total-revenue-country" data-translate="Total Revenue Per Country">Total Revenue Per Country</h2>
+            <div class="table-container4 animated-background">
+                <table border="1">
+                    <tr>
+                        <th data-translate="Country">Country</th>
+                        <th data-translate="Order Count">Order Count</th>
+                        <th data-translate="Percentage">Percentage</th>
+                        <th data-translate="Total Revenue (USD)">Total Revenue (USD)</th> 
+                    </tr>
+                    {% for country_info in country_list %}
+                    <tr>
+                        <td>{{ country_info.COUNTRY }}</td>
+                        <td>{{ country_info['ORDER COUNT'] }}</td>
+                        <td>{{ country_info.PERCENTAGE }}%</td>
+                        <td>{{ country_info['TOTAL REVENUE (USD)'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                <br>
+                <br>
+                <div class="graph-container4">
+                    <img id="country-graph-dark" src='data:image/png;base64,{{ country_graph_dark }}'  style="display: none;">
+                    <img id="country-graph-light" src='data:image/png;base64,{{ country_graph_light }}' style="display: block;">
+                </div>
+            </div>
+            <br>
+            <br>
+            <section id="howitworks">
+                <h2 data-translate="How It Works">How It Works</h2>
+                    <div style="max-width: 800px; margin: auto;">
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/jNLWl_Nu3KE" frameborder="0" allowfullscreen title="Video: How It Works"></iframe>
+                    </div>
+                    
+                </section>
+            </section>
+
+            <footer>
+                <button data-translate="youtube" id="close-button" onclick="window.open('https://www.youtube.com/watch?v=jNLWl_Nu3KE&start=0', '_blank');">Watch on Youtube</button>
+                <div className="footer-menu">
+                    <ul>
+                        <li data-translate="ivanluna.dev"><a href="https://ivanluna.dev" target="_self">ivanluna.dev</a></li>
+                        <a data-translate="User Agreements" href="user_agreements.html" target="_self">User Agreements</a>
+
+                    </ul>
+                </div>
+                <p data-translate="© 2024 Iván Luna. Software Developer.">© 2024 Iván Luna. Software Developer.</p>
+            </footer>
+    </div>
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/translations.js') }}"></script>        
 </body>
 </html>

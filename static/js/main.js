@@ -1,1 +1,199 @@
-function toggleDarkMode(){const e=document.body,t=document.getElementById("graph-dark"),n=document.getElementById("graph-light"),o=document.getElementById("data_products_dark"),a=document.getElementById("data_products_light"),l=document.getElementById("country-graph-dark"),r=document.getElementById("country-graph-light"),c=document.getElementById("dark-mode-icon"),d=document.getElementById("light-mode-icon");document.getElementById("dark-mode-button");e.classList.toggle("dark-mode");const s=e.classList.contains("dark-mode");t.style.display=s?"block":"none",n.style.display=s?"none":"block",o.style.display=s?"block":"none",a.style.display=s?"none":"block",l.style.display=s?"block":"none",r.style.display=s?"none":"block",c.style.display=s?"inline":"none",d.style.display=s?"none":"inline"}function closeHtmlAndRedirect(){window.location.href="/"}function changeLanguage(){const e=document.getElementById("languageDropdown").value;translatePage(e)}function changeLanguage(){const e=document.getElementById("languageDropdown").value;translatePage(e)}document.addEventListener("DOMContentLoaded",function(){var e=document.querySelector(".table-container4 table"),t=Array.from(e.querySelectorAll("tr:nth-child(n+2)"));t.sort(function(e,t){return(parseFloat(t.cells[3].textContent.replace(/[^\d.-]/g,""))||0)-(parseFloat(e.cells[3].textContent.replace(/[^\d.-]/g,""))||0)}),t.forEach(function(t){e.appendChild(t)});var n=t[0].cells[0].textContent,o=t[0].cells[1].textContent,a=t[0].cells[2].textContent,l=t[0].cells[3].textContent,r=document.querySelector(".table-container4"),c=document.createElement("h4");c.textContent=`${n} with a total of ${o} paid purchase orders was the country that contributed the most profit to the stores, with an amount of ${l} USD, reaching ${a} of the total sales across all stores.`,c.setAttribute("data-translate","WinnerCountryInfo"),c.style.textAlign="center",c.style.margin="10px",r.appendChild(c)}),document.addEventListener("DOMContentLoaded",function(){var e=document.querySelector(".table-container3 table"),t=Array.from(e.querySelectorAll("tr:nth-child(n+2)"));t.sort(function(e,t){return(parseFloat(t.cells[3].textContent.replace(/[^\d.-]/g,""))||0)-(parseFloat(e.cells[3].textContent.replace(/[^\d.-]/g,""))||0)}),t.forEach(function(t){e.appendChild(t)});var n=t[0].cells[1].textContent,o=t[0].cells[0].textContent,a=t[0].cells[3].textContent,l=t[0].cells[2].textContent,r=document.querySelector(".graph-container2"),c=document.createElement("h4");c.textContent=`The product '${n}' from the store '${o}' was the best-selling product with a total of ${a} sales and a sales percentage of ${l} in the overall store.`,r.appendChild(c)}),document.addEventListener("DOMContentLoaded",function(){var e=document.querySelector(".table-container2 table"),t=Array.from(e.querySelectorAll("tr:nth-child(n+2)"));t.sort(function(e,t){var n=parseFloat(e.cells[2].textContent.replace(/[^\d.-]/g,""))||0;return(parseFloat(t.cells[2].textContent.replace(/[^\d.-]/g,""))||0)-n}),t.forEach(function(t){e.appendChild(t)});var n=t[0].cells[0].textContent,o=t[0].cells[1].textContent,a=t[0].cells[2].textContent,l=document.querySelector(".graph-container1"),r=document.createElement("h4");r.textContent=`'${n}' from the store '${o}' achieved the best performance as a store manager with a total revenue of ${a} USD.`,l.appendChild(r)}),document.getElementById("languageDropdown").addEventListener("change",changeLanguage);const mainItems=document.querySelectorAll(".main-item");mainItems.forEach(e=>{e.addEventListener("click",()=>{e.classList.toggle("main-item--open")})}),document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".accordion-container a").forEach(function(e){e.addEventListener("click",function(t){t.preventDefault();var n=document.querySelector(".navbar").offsetHeight,o=e.getAttribute("href").substring(1),a=document.getElementById(o);if(a){var l=a.offsetTop-n;window.scrollTo({top:l,behavior:"smooth"})}})})});
+window.onload = function() {
+    fetchDynamicContent();
+};
+
+function fetchDynamicContent() {
+    fetch('/dynamic_content')
+        .then(response => response.text())
+        .then(data => {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            const excludedElements = tempDiv.querySelectorAll('h1, .navbar, .accordion-container');
+            excludedElements.forEach(element => {
+                element.remove();
+            });
+
+            document.getElementById('dynamic-content-container').innerHTML = tempDiv.innerHTML;
+            stopBackgroundAnimation();
+        })
+        .catch(error => console.error('Error fetching dynamic content:', error));
+}
+
+function stopBackgroundAnimation() {
+    const animatedElements = document.querySelectorAll('.animated-background');
+    animatedElements.forEach(element => {
+        element.classList.remove('animated-background');
+    });
+    executeScriptsAfterDynamicContent();
+}
+
+function toggleDarkMode() {
+    const body = document.body;
+    const darkGraph = document.getElementById('graph-dark');
+    const lightGraph = document.getElementById('graph-light');
+    const figDarkGraph = document.getElementById('data_products_dark');
+    const figLightGraph = document.getElementById('data_products_light');
+    const countryDarkGraph = document.getElementById('country-graph-dark');
+    const countryLightGraph = document.getElementById('country-graph-light');
+    const darkModeIcon = document.getElementById('dark-mode-icon');
+    const lightModeIcon = document.getElementById('light-mode-icon');
+    const darkModeButton = document.getElementById('dark-mode-button');
+
+    body.classList.toggle('dark-mode');
+
+    const isDarkMode = body.classList.contains('dark-mode');
+
+    darkGraph.style.display = isDarkMode ? 'block' : 'none';
+    lightGraph.style.display = isDarkMode ? 'none' : 'block';
+    figDarkGraph.style.display = isDarkMode ? 'block' : 'none';
+    figLightGraph.style.display = isDarkMode ? 'none' : 'block';
+    countryDarkGraph.style.display = isDarkMode ? 'block' : 'none';
+    countryLightGraph.style.display = isDarkMode ? 'none' : 'block';
+    darkModeIcon.style.display = isDarkMode ? 'inline' : 'none';
+    lightModeIcon.style.display = isDarkMode ? 'none' : 'inline';
+}
+
+function executeScriptsAfterDynamicContent() {
+    sortCountryTable();
+    sortRevenueTable();
+    sortProductTable();
+}
+
+function sortCountryTable() {
+    var countryTable = document.querySelector('.table-container4 table');
+    var countryRows = Array.from(countryTable.querySelectorAll('tr:nth-child(n+2)'));
+
+    countryRows.sort(function (a, b) {
+        var aValue = parseFloat(b.cells[3].textContent.replace(/[^\d.-]/g, '')) || 0;
+        var bValue = parseFloat(a.cells[3].textContent.replace(/[^\d.-]/g, '')) || 0;
+        return aValue - bValue;
+    });
+
+    countryRows.forEach(function (row) {
+        countryTable.appendChild(row);
+    });
+
+    var winnerCountry = countryRows[0].cells[0].textContent;
+    var winnerOrderCount = countryRows[0].cells[1].textContent;
+    var winnerPercentage = countryRows[0].cells[2].textContent;
+    var winnerTotalRevenue = countryRows[0].cells[3].textContent;
+
+    var winnerContainer = document.querySelector('.table-container4');
+
+    var h4Element = document.createElement('h4');
+
+    h4Element.textContent = `${winnerCountry} with a total of ${winnerOrderCount} paid purchase orders was the country that contributed the most profit to the stores, with an amount of ${winnerTotalRevenue} USD, reaching ${winnerPercentage} of the total sales across all stores.`;
+    h4Element.setAttribute("data-translate", "WinnerCountryInfo");
+    h4Element.style.textAlign = 'center';
+    h4Element.style.margin = '10px';
+    winnerContainer.appendChild(h4Element);
+}
+
+function sortRevenueTable() {
+    var revenueTable = document.querySelector('.table-container2 table');
+    var revenueRows = Array.from(revenueTable.querySelectorAll('tr:nth-child(n+2)'));
+
+    revenueRows.sort(function (a, b) {
+        var aValue = parseFloat(a.cells[2].textContent.replace(/[^\d.-]/g, '')) || 0;
+        var bValue = parseFloat(b.cells[2].textContent.replace(/[^\d.-]/g, '')) || 0;
+        return bValue - aValue;
+    });
+
+    revenueRows.forEach(function (row) {
+        revenueTable.appendChild(row);
+    });
+
+    var winnerUserName = revenueRows[0].cells[0].textContent;
+    var winnerStoreName = revenueRows[0].cells[1].textContent;
+    var winnerTotalRevenue = revenueRows[0].cells[2].textContent;
+
+    var graphContainer = document.querySelector('.graph-container1');
+
+    var h3Element = document.createElement('h4');
+    h3Element.textContent = `'${winnerUserName}' from the store '${winnerStoreName}' achieved the best performance as a store manager with a total revenue of ${winnerTotalRevenue} USD.`;
+    graphContainer.appendChild(h3Element);
+}
+
+function sortProductTable() {
+    var table = document.querySelector('.table-container3 table');
+    var rows = Array.from(table.querySelectorAll('tr:nth-child(n+2)'));
+
+    rows.sort(function (a, b) {
+        var aValue = parseFloat(b.cells[3].textContent.replace(/[^\d.-]/g, '')) || 0;
+        var bValue = parseFloat(a.cells[3].textContent.replace(/[^\d.-]/g, '')) || 0;
+        return aValue - bValue;
+    });
+
+    rows.forEach(function (row) {
+        table.appendChild(row);
+    });
+
+    var winnerProduct = rows[0].cells[1].textContent;
+    var winnerStore = rows[0].cells[0].textContent;
+    var winnerTotalSales = rows[0].cells[3].textContent;
+    var winnerPercentage = rows[0].cells[2].textContent;
+
+    var graphContainer = document.querySelector('.graph-container2');
+
+    var h3Element = document.createElement('h4');
+    h3Element.textContent = `The product '${winnerProduct}' from the store '${winnerStore}' was the best-selling product with a total of ${winnerTotalSales} sales and a sales percentage of ${winnerPercentage} in the overall store.`;
+    graphContainer.appendChild(h3Element);
+}
+
+function closeHtmlAndRedirect() {
+    window.location.href = "/";
+}
+
+function changeLanguage() {
+    const languageDropdown = document.getElementById('languageDropdown');
+    const selectedLanguage = languageDropdown.value;
+
+    translatePage(selectedLanguage);
+}
+
+
+function changeLanguage() {
+    const languageDropdown = document.getElementById('languageDropdown');
+    const selectedLanguage = languageDropdown.value;
+
+    translatePage(selectedLanguage);
+}
+
+document.getElementById('languageDropdown').addEventListener('change', changeLanguage);
+
+
+
+const mainItems = document.querySelectorAll('.main-item');
+
+mainItems.forEach((mainItem) => {
+    mainItem.addEventListener('click', () => {
+        mainItem.classList.toggle('main-item--open');
+    });
+});           
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var accordionLinks = document.querySelectorAll('.accordion-container a');
+
+    accordionLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var navbarHeight = document.querySelector('.navbar').offsetHeight;
+
+            var targetId = link.getAttribute('href').substring(1);
+
+            var targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                var offsetTop = targetElement.offsetTop - navbarHeight;
+
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth' 
+                });
+            }
+        });
+    });
+});
