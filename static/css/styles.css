@@ -56,7 +56,7 @@ body {
     font-family: 'Verdante Sans Regular', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #FFF, #a3a3a3);
+    background: #fff;
 }
 
 a[data-translate="User Agreements"],
