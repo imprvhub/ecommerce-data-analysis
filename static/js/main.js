@@ -16,6 +16,7 @@ function fetchDynamicContent() {
 
             document.getElementById('dynamic-content-container').innerHTML = tempDiv.innerHTML;
             stopBackgroundAnimation();
+            showToggleButton()
         })
         .catch(error => console.error('Error fetching dynamic content:', error));
 }
@@ -58,6 +59,11 @@ function executeScriptsAfterDynamicContent() {
     sortCountryTable();
     sortRevenueTable();
     sortProductTable();
+}
+
+function showToggleButton() {
+    const toggleButton = document.getElementById('toggle-button');
+    toggleButton.style.display = 'block';
 }
 
 function sortCountryTable() {

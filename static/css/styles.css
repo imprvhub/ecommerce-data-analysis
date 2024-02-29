@@ -6,6 +6,10 @@
     --item-non-hover: #92969A;
 }
 
+#toggle-button {
+    display: none; 
+}
+
 .animated-background {
   width: 980px;
   height: 898px;
@@ -35,8 +39,6 @@
     height: 898px;
     position: relative;
 }
-
-
 
 @font-face {
     font-family: 'Verdante Sans Bold';
