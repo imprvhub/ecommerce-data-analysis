@@ -75,8 +75,9 @@
                 </div>
             </div>    
         </div>
-        <div id="dynamic-content-container">
-            <div class="table-container animated-background">
+        <div id="dynamic-content-container" class="animated-background">
+            <div class="centered-text"></div>
+            <div class="table-container">
 
             <table id="table1" border="1">
                 <tr>
@@ -130,7 +131,7 @@
             </table>
             </div>
                 <h2 id="total-revenue" data-translate="Total Revenue Per Store">Total Revenue Per Store</h2>
-            <div class="table-container2 animated-background">
+            <div class="table-container2">
             <table border="1">
                 <tr>
                     <th data-translate="User Name">User Name</th>
@@ -156,7 +157,7 @@
             <br>
             <br>
             <h2 id="top-products" data-translate="Top Products Sold">Top Products Sold</h2>
-            <div class="table-container3 animated-background">
+            <div class="table-container3">
                 <table border="1">
                     <tr>
                         <th data-translate="Store Name">Store Name</th>
@@ -183,7 +184,7 @@
             <br>
             <br>
             <h2 id="total-revenue-country" data-translate="Total Revenue Per Country">Total Revenue Per Country</h2>
-            <div class="table-container4 animated-background">
+            <div class="table-container4">
                 <table border="1">
                     <tr>
                         <th data-translate="Country">Country</th>
@@ -216,19 +217,19 @@
                         <iframe width="100%" height="450" src="https://www.youtube.com/embed/jNLWl_Nu3KE" frameborder="0" allowfullscreen title="Video: How It Works"></iframe>
                     </div>
                     
-                </section>
+
             </section>
 
             <footer>
                 <button data-translate="youtube" id="close-button" onclick="window.open('https://www.youtube.com/watch?v=jNLWl_Nu3KE&start=0', '_blank');">Watch on Youtube</button>
                 <div className="footer-menu">
                     <ul>
-                        <li data-translate="ivanluna.dev"><a href="https://ivanluna.dev" target="_self">ivanluna.dev</a></li>
-                        <a data-translate="User Agreements" href="user_agreements.html" target="_self">User Agreements</a>
+                        <li id="ivanlunadev" data-translate="ivanluna.dev"><a href="https://ivanluna.dev" target="_self">ivanluna.dev</a></li>
+                        <a id="user-agreements" data-translate="User Agreements" href="user_agreements.html" target="_self">User Agreements</a>
 
                     </ul>
                 </div>
-                <p data-translate="© 2024 Iván Luna. Software Developer.">© 2024 Iván Luna. Software Developer.</p>
+                <p id="c-footer" data-translate="© 2024 Iván Luna. Software Developer.">© 2024 Iván Luna. Software Developer.</p>
             </footer>
     </div>
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>

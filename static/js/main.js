@@ -17,6 +17,23 @@ function fetchDynamicContent() {
             document.getElementById('dynamic-content-container').innerHTML = tempDiv.innerHTML;
             stopBackgroundAnimation();
             showToggleButton()
+            document.querySelectorAll('.table-container').forEach(element => {
+                element.style.display = 'block';
+            document.getElementById('total-revenue').style.display = 'block';
+            document.querySelector('.table-container2').style.display = 'block';
+            document.querySelector('.graph-container1').style.display = 'block';
+            document.getElementById('top-products').style.display = 'block';
+            document.querySelector('.table-container3').style.display = 'block';
+            document.querySelector('.graph-container2').style.display = 'block';
+            document.getElementById('total-revenue-country').style.display = 'block';
+            document.querySelector('.table-container4').style.display = 'block';
+            document.querySelector('.graph-container4').style.display = 'block';
+            document.getElementById('howitworks').style.display = 'block';
+            document.getElementById('ivanlunadev').style.display = 'block';
+            document.getElementById('user-agreements').style.display = 'block';
+            document.getElementById('c-footer').style.display = 'block';
+            document.querySelector('#dynamic-content-container .centered-text').style.display = 'none';
+            });
         })
         .catch(error => console.error('Error fetching dynamic content:', error));
 }
@@ -25,6 +42,10 @@ function stopBackgroundAnimation() {
     const animatedElements = document.querySelectorAll('.animated-background');
     animatedElements.forEach(element => {
         element.classList.remove('animated-background');
+    });
+    const loader = document.querySelectorAll('.loader');
+    animatedElements.forEach(element => {
+        element.classList.remove('loader');
     });
     executeScriptsAfterDynamicContent();
 }
@@ -63,7 +84,7 @@ function executeScriptsAfterDynamicContent() {
 
 function showToggleButton() {
     const toggleButton = document.getElementById('toggle-button');
-    toggleButton.style.display = 'block';
+    toggleButton.style.display = 'block'; // Mostrar el botón
 }
 
 function sortCountryTable() {

@@ -6,14 +6,32 @@
     --item-non-hover: #92969A;
 }
 
-#toggle-button {
-    display: none; 
-}
+.table-container,
+#total-revenue,
+.table-container2,
+.graph-container1,
+#top-products,
+.table-container3,
+.graph-container2,
+#total-revenue-country,
+.table-container4,
+.graph-container4,
+#howitworks,
+#close-button,
+#toggle-button,
+#ivanlunadev,
+#user-agreements,
+#c-footer {
+    display: none;
+} 
 
 .animated-background {
-  width: 980px;
-  height: 898px;
-  margin: 20px auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
 }
 
 @keyframes placeHolderShimmer{
@@ -39,6 +57,45 @@
     height: 898px;
     position: relative;
 }
+
+
+#dynamic-content-container .centered-text {
+    color: black;
+    font-size: 24px;
+    margin: 0 auto;
+    width: 80px;
+    aspect-ratio: 1;
+    display: grid;
+    max-width: 80%; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+
+  .centered-text::before,
+  .centered-text::after {    
+    content:"";
+    grid-area: 1/1;
+    --c:no-repeat radial-gradient(farthest-side,#6b6b6b 92%,#0000);
+    background: 
+      var(--c) 50%  0, 
+      var(--c) 50%  100%, 
+      var(--c) 100% 50%, 
+      var(--c) 0    50%;
+    background-size: 12px 12px;
+    animation: l12 1s infinite;
+  }
+  .centered-text::before {
+    margin: 4px;
+    filter: hue-rotate(45deg);
+    background-size: 8px 8px;
+    animation-timing-function: linear
+  }
+  
+  @keyframes l12 { 
+    100%{transform: rotate(.5turn)}
+  }
 
 @font-face {
     font-family: 'Verdante Sans Bold';
@@ -133,6 +190,8 @@ label[for="languageDropdown"] {
     max-width: 800px;
     text-align: left;
 }
+
+
 
 .navbar .accordion-container {
     margin: 0;
@@ -325,6 +384,13 @@ table {
     border-collapse: collapse;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dynamic-content-container {
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 10px;
+    max-width: 800px;
 }
 
 th, td {
