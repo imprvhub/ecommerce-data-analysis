@@ -3,7 +3,7 @@ This implementation showcases and provides a comprehensive analysis of e-commerc
 
 ## Demo
 
-Visit the live app: [ecommerce-data-analysis.azurewebsites.net/](https://ecommerce-data-analysis.azurewebsites.net/) 
+Visit the live app: [ecommerce-data-analysis.azurewebsites.net](https://ecommerce-data-analysis.azurewebsites.net/) 
 
 ## Preview
 
