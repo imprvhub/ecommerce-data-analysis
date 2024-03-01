@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="static-container">
-        <div class="navbar" style="background: linear-gradient(to right, rgba(0, 10, 30, 0.896), rgba(14, 102, 200, 0.422), rgba(0, 10, 30, 0.896));">
+        <div class="navbar">
             <h1 data-translate="E-Commerce Data Analysis">E-Commerce Data Analysis</h1>
             <button id="toggle-button" onclick="toggleDarkMode()">
                 <img id="dark-mode-icon" class="darkicon" src="{{ url_for('static', filename='images/dark-mode-toggle-icon.svg') }}" alt="Dark Mode Icon">
@@ -214,7 +214,7 @@
             <section id="howitworks">
                 <h2 data-translate="How It Works">How It Works</h2>
                     <div style="max-width: 800px; margin: auto;">
-                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/jNLWl_Nu3KE" frameborder="0" allowfullscreen title="Video: How It Works"></iframe>
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/jNLWl_Nu3KE" frameborder="0" style="border-radius: 20px;" allowfullscreen title="Video: How It Works"></iframe>
                     </div>
                     
 
@@ -222,14 +222,23 @@
 
             <footer>
                 <button data-translate="youtube" id="close-button" onclick="window.open('https://www.youtube.com/watch?v=jNLWl_Nu3KE&start=0', '_blank');">Watch on Youtube</button>
-                <div className="footer-menu">
+                <div id="socialsContainer" class="socials-container">
                     <ul>
-                        <li id="ivanlunadev" data-translate="ivanluna.dev"><a href="https://ivanluna.dev" target="_self">ivanluna.dev</a></li>
-                        <a id="user-agreements" data-translate="User Agreements" href="user_agreements.html" target="_self">User Agreements</a>
-
+                        <li class="paragraph" id="ivanlunadev" data-translate="ivanluna.dev"><a href="https://ivanluna.dev" target="_self">ivanluna.dev</a></li>
+                        <a class=github-link href="https://github.com/imprvhub" target="_blank" rel="noopener noreferrer">
+                            GITHUB
+                        </a>
+                        <label>-</label>
+                        <a class=linkedin-link href="https://linkedin.com/in/ivanluna-dev" target="_blank" rel="noopener noreferrer">
+                            LINKEDIN
+                        </a>
                     </ul>
+                    <ul>
+                        <a class="paragraph" id="user-agreements" data-translate="User Agreements" href="user_agreements.html" target="_self">User Agreements</a>
+                    </ul>
+                <br>
                 </div>
-                <p id="c-footer" data-translate="© 2024 Iván Luna. Software Developer.">© 2024 Iván Luna. Software Developer.</p>
+                <p class="paragraph" id="c-footer" data-translate="© 2024 Iván Luna. Software Developer.">© 2024 Iván Luna. Software Developer.</p>
             </footer>
     </div>
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>

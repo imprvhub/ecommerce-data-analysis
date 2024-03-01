@@ -16,7 +16,7 @@ function fetchDynamicContent() {
 
             document.getElementById('dynamic-content-container').innerHTML = tempDiv.innerHTML;
             stopBackgroundAnimation();
-            showToggleButton()
+            showToggleButton();
             document.querySelectorAll('.table-container').forEach(element => {
                 element.style.display = 'block';
             document.getElementById('total-revenue').style.display = 'block';
@@ -32,11 +32,14 @@ function fetchDynamicContent() {
             document.getElementById('ivanlunadev').style.display = 'block';
             document.getElementById('user-agreements').style.display = 'block';
             document.getElementById('c-footer').style.display = 'block';
+            document.querySelector('footer').style.visibility = 'visible';
             document.querySelector('#dynamic-content-container .loader').style.display = 'none';
-            });
+        });
         })
         .catch(error => console.error('Error fetching dynamic content:', error));
 }
+
+
 
 function stopBackgroundAnimation() {
     const animatedElements = document.querySelectorAll('.animated-background');
@@ -171,14 +174,6 @@ function sortProductTable() {
 function closeHtmlAndRedirect() {
     window.location.href = "/";
 }
-
-function changeLanguage() {
-    const languageDropdown = document.getElementById('languageDropdown');
-    const selectedLanguage = languageDropdown.value;
-
-    translatePage(selectedLanguage);
-}
-
 
 function changeLanguage() {
     const languageDropdown = document.getElementById('languageDropdown');

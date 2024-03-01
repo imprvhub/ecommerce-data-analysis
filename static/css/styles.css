@@ -1,9 +1,9 @@
 :root {
-    --primary-item: #18729f;
+    --primary-item: #e6bb76;
     --background-item: #EFEFEF;
     --gray: #D5D4D5;
     --background: transparent !important;
-    --item-non-hover: #92969A;
+    --item-non-hover: #e0e0e0;
 }
 
 .table-container,
@@ -24,6 +24,7 @@
 #c-footer {
     display: none;
 } 
+
 
 .animated-background {
     width: 100%;
@@ -49,13 +50,17 @@
     animation-iteration-count: infinite;
     animation-name: placeHolderShimmer;
     animation-timing-function: linear;
-
     background: transparent;
     background-image: -webkit-gradient(linear, left center, right center, from(#ebebeb), color-stop(.2, #e1e1e1), color-stop(.4, #ebebeb), to(#ebebeb));
     background-image: -webkit-linear-gradient(left, #ebebeb 0%, #e1e1e1 20%, #ebebeb 40%, #ebebeb 100%);
     background-size: 980px 898px;
     height: 1200px;
     position: relative;
+}
+
+#dynamic-content-container {
+    margin-top: 175px;
+    margin-bottom: 130px;
 }
 
 
@@ -111,6 +116,12 @@
     font-style: normal;
 }
 
+.paragraph {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 body {
     font-family: 'Verdante Sans Regular', sans-serif;
     margin: 0;
@@ -148,14 +159,18 @@ ul li a:hover {
 
 .navbar {
     overflow: hidden;
-    background-color: rgba(20, 24, 32, 0.896);
-    position: sticky;
+    position: fixed; 
     top: 0;
     width: 100%;
     z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    background-color: rgba(24, 24, 25, 0.6);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 .navbar button {
@@ -172,8 +187,12 @@ ul li a:hover {
     top: 120px;
     right: 35px;
     text-align: center;
-    color: #92969A;
-    background-color: rgba(20, 24, 32, 0.896);
+    color: #ffffff;
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    background-color: rgba(68, 68, 68, 0.6);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
     border-radius: 10%;
 }
 
@@ -488,14 +507,37 @@ body.dark-mode h2 {
 
 
 footer {
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 1rem;
+    visibility: hidden; 
+    position: fixed; 
+    left: 0;
     bottom: 0;
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    text-align: center;
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    background-color: rgba(24, 24, 25, 0.6);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.footer-card a {
+    text-decoration: none;
+}
+
+.footer-card {
+    position: fixed; 
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
 }
 
 .user-agreements {
@@ -508,6 +550,8 @@ footer {
 .footer-menu {
     margin-bottom: 1rem;
 }
+
+
 
 footer ul {
     list-style: none;
@@ -525,6 +569,67 @@ footer li {
 footer p {
     margin: 0;
 }
+
+.footer-card {
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    background-color: rgba(24, 24, 25, 0.6);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.socials-container {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+}
+
+.ivanlunadev-link,
+.ivanlunadev,
+.github-link,
+.linkedin-link {
+    text-decoration: none;
+    color: inherit;    
+}
+
+
+.ivanlunadev-link:hover,
+.ivanlunadev,
+.github-link:hover,
+.linkedin-link:hover {
+    color: white;
+}
+
+
+.paragraph-link {
+    color: white; 
+}
+
+
+.button-back {
+    display: inline-block;
+    padding: 10px 20px;
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    background-color: #747475;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-back:hover {
+    background-color: #484848;
+    text-decoration: none;
+}
+
 
 @media screen and (max-width: 600px) {
     #footer-button {
