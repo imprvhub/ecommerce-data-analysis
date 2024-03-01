@@ -32,7 +32,7 @@ function fetchDynamicContent() {
             document.getElementById('ivanlunadev').style.display = 'block';
             document.getElementById('user-agreements').style.display = 'block';
             document.getElementById('c-footer').style.display = 'block';
-            document.querySelector('#dynamic-content-container .centered-text').style.display = 'none';
+            document.querySelector('#dynamic-content-container .loader').style.display = 'none';
             });
         })
         .catch(error => console.error('Error fetching dynamic content:', error));
@@ -84,7 +84,7 @@ function executeScriptsAfterDynamicContent() {
 
 function showToggleButton() {
     const toggleButton = document.getElementById('toggle-button');
-    toggleButton.style.display = 'block'; // Mostrar el botón
+    toggleButton.style.display = 'block'; 
 }
 
 function sortCountryTable() {

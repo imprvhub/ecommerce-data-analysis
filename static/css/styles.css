@@ -54,12 +54,12 @@
     background-image: -webkit-gradient(linear, left center, right center, from(#ebebeb), color-stop(.2, #e1e1e1), color-stop(.4, #ebebeb), to(#ebebeb));
     background-image: -webkit-linear-gradient(left, #ebebeb 0%, #e1e1e1 20%, #ebebeb 40%, #ebebeb 100%);
     background-size: 980px 898px;
-    height: 898px;
+    height: 1200px;
     position: relative;
 }
 
 
-#dynamic-content-container .centered-text {
+#dynamic-content-container .loader {
     color: black;
     font-size: 24px;
     margin: 0 auto;
@@ -73,8 +73,8 @@
     transform: translate(-50%, -50%); 
 }
 
-  .centered-text::before,
-  .centered-text::after {    
+  .loader::before,
+  .loader::after {    
     content:"";
     grid-area: 1/1;
     --c:no-repeat radial-gradient(farthest-side,#6b6b6b 92%,#0000);
@@ -86,7 +86,7 @@
     background-size: 12px 12px;
     animation: l12 1s infinite;
   }
-  .centered-text::before {
+  .loader::before {
     margin: 4px;
     filter: hue-rotate(45deg);
     background-size: 8px 8px;
