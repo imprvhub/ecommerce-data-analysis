@@ -1,8 +1,13 @@
 # Welcome to the [E-commerce Data Analysis](https://ecommerce-data-analysis.azurewebsites.net/) Project.
 This implementation showcases and provides a comprehensive analysis of e-commerce data. Using Python (Flask Framework) with GUnicorn and Azure Deployment. For detailed insights, please visit [this link](https://ivanluna.dev/projects/post-python-ecommerce/).
 
-### Live Demo:
-https://ecommerce-data-analysis.azurewebsites.net/
+## Demo
+
+Visit the live app: [apod-nasa-viewer.vercel.app](https://apod-nasa-viewer.vercel.app)
+
+## Preview
+
+![Preview](./static/images/preview.png "Preview")
 
 ### Key Features:
 1. <ins>**Retrieve Data like a Super-Admin:**<ins>
@@ -50,6 +55,9 @@ python3 app.py
 The application should now be accessible at http://localhost:8000.
 
 ### Conclusion:
+
+#### Known Issues:
+- **Performance Latency**: Occasionally, high Azure instance loads result in significant latency. To address this, I plan to migrate the project to a different platform in the future, thereby improving performance.
 
 #### Achievements
 
