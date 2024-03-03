@@ -58,11 +58,6 @@
     position: relative;
 }
 
-#dynamic-content-container {
-    margin-top: 175px;
-    margin-bottom: 130px;
-}
-
 
 #dynamic-content-container .loader {
     color: black;
@@ -586,16 +581,15 @@ footer p {
 
 .wrapper {
     overflow-y: auto;
-    max-height: 600px;
-    margin-right: 40px;
-    margin-left: 40px;
+    max-height: 650px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .footer-card {
     backdrop-filter: blur(25px) saturate(200%);
     -webkit-backdrop-filter: blur(25px) saturate(200%);
     background-color: rgba(24, 24, 25, 0.6);
-    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
     margin-left: auto;
     margin-right: auto;
@@ -657,6 +651,9 @@ footer p {
     .navbar h1 {
         text-align: center;
     }
+    .wrapper {
+        padding-top: 140px;
+    }
 }
 
 
@@ -683,6 +680,14 @@ footer p {
     .navbar .accordion-container {
         margin-top: 20px;
     }
+
+    .wrapper {
+        padding-top: 100px;
+    }
+    #dynamic-content-container{
+        padding-top: 120px;
+        padding-bottom: 85px;
+    }
 }
 
 @media screen and (min-width: 375px) and (max-width: 424px) {
@@ -692,6 +697,13 @@ footer p {
     }
     #languageDropdown {
         margin-right: 105px;
+    }
+    .wrapper {
+        padding-top: 80px;
+    }
+    #dynamic-content-container{
+        padding-top: 120px;
+        padding-bottom: 85px;
     }
 }
 
@@ -703,16 +715,39 @@ footer p {
     #languageDropdown {
         margin-top: 38px;
     }
+    
 }
 
 
 @media screen and (min-width: 425px) and (max-width: 767px) {
     #toggle-button {
-        margin-right: -35px;
+        margin-right: -20px;
 
     }
     #languageDropdown {
         margin-right: -15px;
     }
+    .wrapper {
+        padding-top: 100px;
+    }
+    #dynamic-content-container{
+        padding-top: 120px;
+        padding-bottom: 85px;
+    }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #dynamic-content-container{
+        padding-top: 100px;
+        padding-bottom: 85px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 2560px) {
+    #dynamic-content-container{
+        padding-top: 100px;
+        padding-bottom: 85px;
+    }
+}
+
 
