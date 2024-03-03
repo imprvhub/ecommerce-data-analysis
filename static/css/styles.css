@@ -140,7 +140,7 @@ a {
 
 a[data-translate="User Agreements"]:hover,
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 h1,
@@ -149,6 +149,10 @@ h2 {
     padding: 10px;
     text-align: center;
     font-family: 'Verdante Sans Bold', sans-serif;
+}
+
+h1 {
+    color: #e6bb76
 }
 
 h2 {
@@ -161,7 +165,8 @@ ul li a {
 }
 
 ul li a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: #e6bb76;
 }
 
 .navbar {
@@ -218,8 +223,6 @@ label[for="languageDropdown"] {
     text-align: left;
     overflow-x: scroll;
 }
-
-
 
 .navbar .accordion-container {
     margin: 0;
@@ -619,15 +622,25 @@ footer p {
 
 
 .ivanlunadev-link:hover,
-.ivanlunadev,
+.ivanlunadev:hover,
 .github-link:hover,
 .linkedin-link:hover {
-    color: white;
+    color: #e6bb76;
+}
+
+#user-agreements
+ {
+    text-decoration: none;
+}
+
+#user-agreements:hover{
+    color: #e6bb76;
 }
 
 
 .paragraph-link {
-    color: white; 
+    color: #e6bb76; 
+    text-decoration: none;
 }
 
 
@@ -647,6 +660,7 @@ footer p {
 .button-back:hover {
     background-color: #484848;
     text-decoration: none;
+    color: #e6bb76;
 }
 
 
