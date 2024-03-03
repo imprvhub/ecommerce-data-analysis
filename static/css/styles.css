@@ -553,7 +553,7 @@ footer {
     justify-content: center;
     align-items: center;
     text-align: center;
-
+    
 }
 
 .user-agreements {
@@ -588,9 +588,10 @@ footer p {
 
 .wrapper {
     overflow-y: auto;
-    max-height: 650px;
+    max-height: 600px;
     margin-right: 20px;
     margin-left: 20px;
+    padding-bottom: 50px;
 }
 
 .footer-card {
@@ -649,12 +650,13 @@ footer p {
     padding: 10px 20px;
     backdrop-filter: blur(25px) saturate(200%);
     -webkit-backdrop-filter: blur(25px) saturate(200%);
-    background-color: #747475;
+    background-color: #484848;
     color: #fff;
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .button-back:hover {
@@ -662,8 +664,6 @@ footer p {
     text-decoration: none;
     color: #e6bb76;
 }
-
-
 
 @media screen and (min-width: 250px) and (max-width: 315px) {
     .navbar h1 {
@@ -736,7 +736,6 @@ footer p {
     
 }
 
-
 @media screen and (min-width: 425px) and (max-width: 767px) {
     #toggle-button {
         margin-right: -20px;
@@ -746,11 +745,17 @@ footer p {
         margin-right: -15px;
     }
     .wrapper {
-        padding-top: 100px;
+        padding-top: 50px;
     }
     #dynamic-content-container{
         padding-top: 120px;
         padding-bottom: 85px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 778px) {
+    .wrapper {
+        padding-top: 20px;
     }
 }
 
