@@ -10,10 +10,12 @@ import plotly.express as px
 import pymysql
 import pytz
 import requests
+from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template
 
 from country_mapping import country_mapping
 
+load_dotenv()
 app = Flask(__name__)
 
 clerk_publishable_key = os.environ["clerk_publishable_key"]
@@ -296,54 +298,74 @@ def generate_dynamic_content():
         revenues = [store["revenue"] for store in store_revenues_list]
 
         max_revenue_index = revenues.index(max(revenues))
+    except Exception as e:
+        return jsonify({"error": str(e)})
+    return generate_graphs(orders_list, additional_user_info_dict, store_revenues_list, store_revenues, top_products_list)
 
+def generate_graphs(orders_list, additional_user_info_dict, store_revenues_list, store_revenues, top_products_list):
         df = pd.DataFrame(store_revenues_list)
-        fig_dark = px.scatter(df, x="store_name", y="revenue",
-                            color="user_name",
-                            size="revenue",
-                            hover_name="store_name",
-                            log_x=False, size_max=60,
-                            labels={"revenue": "Revenues", "store_name": "Store", "user_name": "Store Managers"},
-                            title="Store Revenue")
-        
-        transparent_color = 'rgba(0,0,0,0)'
-        light_grid_color = 'rgba(255,255,255,0.1)'
-        grey_color = '#99A3B8'
+        fig_dark = px.scatter(
+            df,
+            x="store_name",
+            y="revenue",
+            color="user_name",
+            size="revenue",
+            hover_name="store_name",
+            log_x=False,
+            size_max=60,
+            labels={
+                "revenue": "Revenues",
+                "store_name": "Store",
+                "user_name": "Store Managers",
+            },
+            title="Store Revenue",
+        )
+
+        transparent_color = "rgba(0,0,0,0)"
+        light_grid_color = "rgba(255,255,255,0.1)"
+        grey_color = "#99A3B8"
 
         fig_dark.update_layout(
-            plot_bgcolor=transparent_color,  
-            paper_bgcolor=transparent_color,  
-            font=dict(color=grey_color, family='Verdante Sans Regular'),   
-            xaxis=dict(gridcolor=light_grid_color),  
-            yaxis=dict(gridcolor=light_grid_color),  
+            plot_bgcolor=transparent_color,
+            paper_bgcolor=transparent_color,
+            font=dict(color=grey_color, family="Verdante Sans Regular"),
+            xaxis=dict(gridcolor=light_grid_color),
+            yaxis=dict(gridcolor=light_grid_color),
         )
 
         buf_dark = BytesIO()
         fig_dark.write_image(buf_dark, format="png", engine="kaleido")
         data_dark = base64.b64encode(buf_dark.getvalue()).decode("ascii")
 
-
-        fig_light = px.scatter(df, x="store_name", y="revenue",
-                            color="user_name",
-                            size="revenue",
-                            hover_name="store_name",
-                            log_x=False, size_max=60,
-                            labels={"revenue": "Revenues", "store_name": "Store", "user_name": "Store Managers"},
-                            title="Store Revenue")
-
+        fig_light = px.scatter(
+            df,
+            x="store_name",
+            y="revenue",
+            color="user_name",
+            size="revenue",
+            hover_name="store_name",
+            log_x=False,
+            size_max=60,
+            labels={
+                "revenue": "Revenues",
+                "store_name": "Store",
+                "user_name": "Store Managers",
+            },
+            title="Store Revenue",
+        )
 
         fig_light.update_layout(
-            plot_bgcolor=transparent_color,  
-            paper_bgcolor=transparent_color,  
-            font=dict(color='#000000'),  
-            xaxis=dict(gridcolor=light_grid_color),  
-            yaxis=dict(gridcolor=light_grid_color),  
+            plot_bgcolor=transparent_color,
+            paper_bgcolor=transparent_color,
+            font=dict(color="#000000"),
+            xaxis=dict(gridcolor=light_grid_color),
+            yaxis=dict(gridcolor=light_grid_color),
         )
 
         buf_light = BytesIO()
         fig_light.write_image(buf_light, format="png", engine="kaleido")
         data_light = base64.b64encode(buf_light.getvalue()).decode("ascii")
-        
+
         df_products = pd.DataFrame(top_products_list)
         custom_width = 800
         custom_height = 600
@@ -358,23 +380,25 @@ def generate_dynamic_content():
                 "total_sales": "Total Sales",
                 "store_name": "Store",
                 "product_name": "Product Name",
-                "sales_percentage": "Sales Percentage"
+                "sales_percentage": "Sales Percentage",
             },
             title="Top Products Sold by Store",
-            color_discrete_sequence=px.colors.qualitative.Prism  
+            color_discrete_sequence=px.colors.qualitative.Prism,
         )
 
         fig_products_dark.update_layout(
-            plot_bgcolor=transparent_color,  
-            paper_bgcolor=transparent_color,  
-            font=dict(color='#99A3B8'),
-            width=custom_width,  
-            height=custom_height
+            plot_bgcolor=transparent_color,
+            paper_bgcolor=transparent_color,
+            font=dict(color="#99A3B8"),
+            width=custom_width,
+            height=custom_height,
         )
 
         buf_products_dark = BytesIO()
         fig_products_dark.write_image(buf_products_dark, format="png", engine="kaleido")
-        data_products_dark = base64.b64encode(buf_products_dark.getvalue()).decode("ascii")
+        data_products_dark = base64.b64encode(buf_products_dark.getvalue()).decode(
+            "ascii"
+        )
 
         fig_products_light = px.bar(
             df_products,
@@ -386,24 +410,27 @@ def generate_dynamic_content():
                 "total_sales": "Total Sales",
                 "store_name": "Store",
                 "product_name": "Product Name",
-                "sales_percentage": "Sales Percentage"
+                "sales_percentage": "Sales Percentage",
             },
             title="Top Products Sold by Store",
-            color_discrete_sequence=px.colors.qualitative.Prism 
+            color_discrete_sequence=px.colors.qualitative.Prism,
         )
 
         fig_products_light.update_layout(
             plot_bgcolor=transparent_color,
             paper_bgcolor=transparent_color,
-            font=dict(color='#000000'), 
-            width=custom_width,  
-            height=custom_height
+            font=dict(color="#000000"),
+            width=custom_width,
+            height=custom_height,
         )
 
         buf_products_light = BytesIO()
-        fig_products_light.write_image(buf_products_light, format="png", engine="kaleido")
-        data_products_light = base64.b64encode(buf_products_light.getvalue()).decode("ascii")
-
+        fig_products_light.write_image(
+            buf_products_light, format="png", engine="kaleido"
+        )
+        data_products_light = base64.b64encode(buf_products_light.getvalue()).decode(
+            "ascii"
+        )
 
         total_revenue_by_country = {}
         order_count_by_country = {}
@@ -412,11 +439,15 @@ def generate_dynamic_content():
 
             country_code = order.get("address", "")[-2:]
             country = get_country_from_code(country_code)
-            is_paid = order['is_paid']
+            is_paid = order["is_paid"]
             if is_paid:
                 revenue = Decimal(order.get("price_USD", 0))
-                total_revenue_by_country[country] = total_revenue_by_country.get(country, Decimal(0)) + revenue
-                order_count_by_country[country] = order_count_by_country.get(country, 0) + 1
+                total_revenue_by_country[country] = (
+                    total_revenue_by_country.get(country, Decimal(0)) + revenue
+                )
+                order_count_by_country[country] = (
+                    order_count_by_country.get(country, 0) + 1
+                )
 
         country_list = []
         total_revenue_all_countries = sum(total_revenue_by_country.values(), Decimal(0))
@@ -425,15 +456,19 @@ def generate_dynamic_content():
             order_count = order_count_by_country.get(country, 0)
 
             total_revenue = round(float(total_revenue), 2)
-            percentage = (float(total_revenue) / float(total_revenue_all_countries)) * 100
+            percentage = (
+                float(total_revenue) / float(total_revenue_all_countries)
+            ) * 100
             percentage = round(percentage, 2)
-            
-            country_list.append({
-                'COUNTRY': country,
-                'TOTAL REVENUE (USD)': float(total_revenue),
-                'ORDER COUNT': order_count,
-                'PERCENTAGE': float(percentage)
-            })
+
+            country_list.append(
+                {
+                    "COUNTRY": country,
+                    "TOTAL REVENUE (USD)": float(total_revenue),
+                    "ORDER COUNT": order_count,
+                    "PERCENTAGE": float(percentage),
+                }
+            )
 
         df_country = pd.DataFrame(country_list)
 
@@ -444,30 +479,34 @@ def generate_dynamic_content():
             color="TOTAL REVENUE (USD)",
             hover_name="COUNTRY",
             title="Heatmap Of Global Revenues",
-            template=None,  
+            template=None,
             projection="natural earth",
             color_continuous_scale=px.colors.sequential.Viridis,
-            labels={'TOTAL REVENUE (USD)': 'Total Revenue (USD)'},
-            color_discrete_map={"#99A3B8": "#99A3B8"}  
+            labels={"TOTAL REVENUE (USD)": "Total Revenue (USD)"},
+            color_discrete_map={"#99A3B8": "#99A3B8"},
         )
 
         heatmap_fig_dark.update_geos(
-            bgcolor="rgba(0, 0, 0, 0)",  
-            showcoastlines=True,  
-            coastlinecolor="#FFFFFF",  
+            bgcolor="rgba(0, 0, 0, 0)",
+            showcoastlines=True,
+            coastlinecolor="#FFFFFF",
         )
 
-        heatmap_fig_dark.update_traces(marker_line_color="#99A3B8", selector={'marker.color': '#99A3B8'})
+        heatmap_fig_dark.update_traces(
+            marker_line_color="#99A3B8", selector={"marker.color": "#99A3B8"}
+        )
 
         heatmap_fig_dark.update_layout(
-            plot_bgcolor="rgba(0, 0, 0, 0)",  
-            paper_bgcolor="rgba(0, 0, 0, 0)", 
-            font=dict(color='#99A3B8'),  
+            plot_bgcolor="rgba(0, 0, 0, 0)",
+            paper_bgcolor="rgba(0, 0, 0, 0)",
+            font=dict(color="#99A3B8"),
         )
 
         country_buf_dark = BytesIO()
         heatmap_fig_dark.write_image(country_buf_dark, format="png", engine="kaleido")
-        country_graph_dark = base64.b64encode(country_buf_dark.getvalue()).decode("ascii")
+        country_graph_dark = base64.b64encode(country_buf_dark.getvalue()).decode(
+            "ascii"
+        )
 
         heatmap_fig_light = px.choropleth(
             df_country,
@@ -476,44 +515,45 @@ def generate_dynamic_content():
             color="TOTAL REVENUE (USD)",
             hover_name="COUNTRY",
             title="Heatmap Of Global Revenues",
-            template=None, 
+            template=None,
             projection="natural earth",
             color_continuous_scale=px.colors.sequential.Viridis,
-            labels={'TOTAL REVENUE (USD)': 'Total Revenue (USD)'}
+            labels={"TOTAL REVENUE (USD)": "Total Revenue (USD)"},
         )
 
         heatmap_fig_light.update_geos(
             bgcolor="rgba(255, 255, 255, 0)",
-            showcoastlines=True, 
-            coastlinecolor="#99A3B8",  
+            showcoastlines=True,
+            coastlinecolor="#99A3B8",
         )
 
         heatmap_fig_light.update_layout(
-            plot_bgcolor="rgba(255, 255, 255, 0)",  
-            paper_bgcolor="rgba(255, 255, 255, 0)",  
+            plot_bgcolor="rgba(255, 255, 255, 0)",
+            paper_bgcolor="rgba(255, 255, 255, 0)",
         )
 
         country_buf_light = BytesIO()
         heatmap_fig_light.write_image(country_buf_light, format="png", engine="kaleido")
-        country_graph_light = base64.b64encode(country_buf_light.getvalue()).decode("ascii")
+        country_graph_light = base64.b64encode(country_buf_light.getvalue()).decode(
+            "ascii"
+        )
 
-        
+        return render_template(
+            "user_orders.html",
+            orders_data=orders_list,
+            additional_user_info_dict=additional_user_info_dict,
+            store_revenues=store_revenues,
+            store_revenues_list=store_revenues_list,
+            graph_dark=data_dark,
+            graph_light=data_light,
+            top_products_list=top_products_list,
+            data_products_light=data_products_light,
+            data_products_dark=data_products_dark,
+            country_list=country_list,
+            country_graph_dark=country_graph_dark,
+            country_graph_light=country_graph_light,
+        )
 
-        return render_template("user_orders.html", 
-                            orders_data=orders_list, 
-                            additional_user_info_dict=additional_user_info_dict, 
-                            store_revenues=store_revenues, 
-                            store_revenues_list=store_revenues_list, 
-                            graph_dark=data_dark, 
-                            graph_light=data_light, 
-                            top_products_list=top_products_list, 
-                            data_products_light=data_products_light, 
-                            data_products_dark=data_products_dark, 
-                            country_list=country_list,
-                            country_graph_dark=country_graph_dark,
-                            country_graph_light=country_graph_light)            
-    except Exception as e:
-        return jsonify({"error": str(e)})
 
 
 def get_additional_user_info(user_info, new_user_id_counter):
