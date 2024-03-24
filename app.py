@@ -40,12 +40,18 @@ def user_agreements():
     """
     return render_template("user_agreements.html")
 
-@app.route("/", methods=["GET"])
+@app.route("/", methods=["GET"])    
 def render_index():
+    """
+    Render the root route for index.html
+    """
     return render_template("user_orders.html")
 
 @app.route("/dynamic_content", methods=["GET"])
 def dynamic_content():
+    """
+    Calls for the function that generates dynamic content to incorporate that function to the flow.
+    """
     try:
         dynamic_content = generate_dynamic_content()
         return dynamic_content
@@ -55,7 +61,7 @@ def dynamic_content():
 
 def generate_dynamic_content():
     """
-    Fetch user orders and relevant data from clerk and planetscale.
+    Fetch dynamic user orders and relevant data from clerk and planetscale.
     """
     cursor = db.cursor()
 
@@ -301,6 +307,9 @@ def generate_dynamic_content():
     return generate_graphs(orders_list, additional_user_info_dict, store_revenues_list, store_revenues, top_products_list)
 
 def generate_graphs(orders_list, additional_user_info_dict, store_revenues_list, store_revenues, top_products_list):
+        """
+        Receives dynamic data, creates matplotlib and plotly graphs and return everyhing to the template.
+        """
         df = pd.DataFrame(store_revenues_list)
         fig_dark = px.scatter(
             df,
@@ -556,7 +565,7 @@ def generate_graphs(orders_list, additional_user_info_dict, store_revenues_list,
 
 def get_additional_user_info(user_info, new_user_id_counter):
     """
-    Auxiliar function for fetching users' information from Clerk API.
+    Auxiliar function for fetching users' information from Clerk API. And refactor the data accordly.
     """
 
     email_addresses = [
@@ -624,7 +633,7 @@ def get_additional_user_info(user_info, new_user_id_counter):
 
 def get_clerk_users_info():
     """
-    Get additional user information from Clerk.
+    Auxiliar Function: Get additional user information from Clerk.
     """
     try:
         headers = {"Authorization": f"Bearer {clerk_secret_key}"}
