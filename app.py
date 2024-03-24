@@ -10,12 +10,10 @@ import plotly.express as px
 import pymysql
 import pytz
 import requests
-from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template
 
 from country_mapping import country_mapping
 
-load_dotenv()
 app = Flask(__name__)
 
 clerk_publishable_key = os.environ["clerk_publishable_key"]
