@@ -1,11 +1,13 @@
-# Welcome to the [E-commerce Data Analysis](https://ecommerce-data-analysis.azurewebsites.net/) Project.
+## Welcome to the [E-commerce Data Analysis](https://ecommerce-data-analysis.azurewebsites.net/) Project.
+> [!NOTE]  
+> This project is an implementation.
 This implementation showcases and provides a comprehensive analysis of e-commerce data. Using Python (Flask Framework) with GUnicorn and Azure Deployment. For detailed insights, please visit [this link](https://ivanluna.dev/projects/post-python-ecommerce/).
 
-## Demo
+### Demo
 
 Visit the live app: [ecommerce-data-analysis.azurewebsites.net](https://ecommerce-data-analysis.azurewebsites.net/) 
 
-## Preview
+### Preview
 
 ![Preview](./static/images/preview.png "Preview")
 
