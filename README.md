@@ -1,4 +1,4 @@
-## Welcome to the [E-commerce Data Analysis](https://ecommerce-data-analysis.azurewebsites.net/) Project.
+## Welcome to the [E-commerce Data Analysis](https://ecommerce-data-analysis.vercel.app/) Project.
 > [!NOTE]  
 > This project is an implementation.
 
@@ -6,7 +6,7 @@ This implementation showcases and provides a comprehensive analysis of e-commerc
 
 ### Demo
 
-Visit the live app: [ecommerce-data-analysis.azurewebsites.net](https://ecommerce-data-analysis.azurewebsites.net/) 
+Visit the live app: [ecommerce-data-analysis.vercel.app](https://ecommerce-data-analysis.vercel.app/) 
 
 ### Preview
 
@@ -35,13 +35,13 @@ Visit the live app: [ecommerce-data-analysis.azurewebsites.net](https://ecommerc
 ### Installation and Local Execution
 
 #### 1. Clone 'Code With Antonio' Projects. 
-In order to this implementation works properly you must to clone and set the [ecommerce-admin](https://github.com/antonioerdeljac/next13-ecommerce-admin) (in first place) and then [ecommerce-store](https://github.com/antonioerdeljac/next13-ecommerce-store) projects from 'Code With Antonio'. For detailed tutorial please visit: [Full Stack E-Commerce + Dashboard & CMS: Next.js 13 App Router, React, Tailwind, Prisma, MySQL, 2023](https://www.youtube.com/watch?v=5miHyP6lExg).
+In order to this implementation works properly you must to clone and set the [ecommerce-admin](https://github.com/antonioerdeljac/next13-ecommerce-admin) (in first place) and then [ecommerce-store](https://github.com/antonioerdeljac/next13-ecommerce-store) projects from 'Code With Antonio' (From March 2024 are paid content). For detailed tutorial please visit: [Full Stack E-Commerce + Dashboard & CMS: Next.js 13 App Router, React, Tailwind, Prisma, MySQL, 2023](https://www.youtube.com/watch?v=5miHyP6lExg).
 
 DISCLAIMER: Make sure to create a functional store from ecommerce-admin with products that can be viewed on the client side ecommerce-store. Keep in mind that the payments made in the demonstration are simulated and use generic data, following the recommended practices of [Stripe Docs](https://stripe.com/docs/testing ). If you have already configured payment management according to your region, then skip the simulation. It is recommended not to skip this step unless you are certain and take responsibility for the respective movements or transactions you generate. This project is purely demonstrative to showcase how a Python implementation works. We are not responsible for any misunderstandings or mismanagement. For more information: [Click here.](https://ecommerce-data-analysis.azurewebsites.net/user_agreements.html).
 
 #### 2. Clone the implementation repository
 ```bash
-git clone https://github.com/imprvhub/ecommerce_data_analysis.git
+git clone https://github.com/imprvhub/ecommerce-data-analysis.git
 ```
 #### 2.1 Navigate to the project directory
 ```bash
@@ -60,7 +60,7 @@ The application should now be accessible at http://localhost:8000.
 ### Conclusion:
 
 #### Known Issues:
-- **Performance Latency**: Occasionally, high Azure instance loads result in significant latency. To address this, I plan to migrate the project to a different platform in the future, thereby improving performance.
+- **Performance Latency**: Occasionally, high Azure instance loads result in significant latency. To address this, I plan to migrate the project to a different platform in the future, thereby improving performance. [DONE: migration successfully to Vercel].
 
 #### Achievements
 
@@ -84,4 +84,4 @@ Your input matters, and I'm ready to help address any inquiries or feedback you 
 Feel free to share your insights, recommendations, or suggestions for continuous improvement. If you encounter any challenges or require assistance, please [create a new GitHub issue](https://github.com/imprvhub/ecommerce-data-analysis/issues/new). Be sure to provide a detailed description of your issue to facilitate prompt and precise support.
 
 ### License
-For more information regarding this topic please read the following [User Agreement Section.](https://ecommerce-data-analysis.azurewebsites.net/user_agreements.html)
+For more information regarding this topic please read the following [User Agreement Section.](https://ecommerce-data-analysis.vercel.app/user_agreements.html)
