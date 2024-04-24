@@ -12,6 +12,10 @@ Visit the live app: [ecommerce-data-analysis.vercel.app](https://ecommerce-data-
 
 ![Preview](./static/images/preview.png "Preview")
 
+### Update (April 24, 2024)
+
+- **Migration from Azure to Vercel**: Significantly improved User Experience (UE) by transitioning the deployment infrastructure from Azure to Vercel. This strategic migration addresses performance concerns encountered with the previous Azure deployment. Leveraging Vercel's optimized platform ensures smoother and more efficient operations, enhancing overall system reliability and responsiveness.
+
 ### Key Features:
 1. <ins>**Retrieve Data like a Super-Admin:**<ins>
 
@@ -37,7 +41,7 @@ Visit the live app: [ecommerce-data-analysis.vercel.app](https://ecommerce-data-
 #### 1. Clone 'Code With Antonio' Projects. 
 In order to this implementation works properly you must to clone and set the [ecommerce-admin](https://github.com/antonioerdeljac/next13-ecommerce-admin) (in first place) and then [ecommerce-store](https://github.com/antonioerdeljac/next13-ecommerce-store) projects from 'Code With Antonio' (From March 2024 are paid content). For detailed tutorial please visit: [Full Stack E-Commerce + Dashboard & CMS: Next.js 13 App Router, React, Tailwind, Prisma, MySQL, 2023](https://www.youtube.com/watch?v=5miHyP6lExg).
 
-DISCLAIMER: Make sure to create a functional store from ecommerce-admin with products that can be viewed on the client side ecommerce-store. Keep in mind that the payments made in the demonstration are simulated and use generic data, following the recommended practices of [Stripe Docs](https://stripe.com/docs/testing ). If you have already configured payment management according to your region, then skip the simulation. It is recommended not to skip this step unless you are certain and take responsibility for the respective movements or transactions you generate. This project is purely demonstrative to showcase how a Python implementation works. We are not responsible for any misunderstandings or mismanagement. For more information: [Click here.](https://ecommerce-data-analysis.azurewebsites.net/user_agreements.html).
+DISCLAIMER: Make sure to create a functional store from ecommerce-admin with products that can be viewed on the client side ecommerce-store. Keep in mind that the payments made in the demonstration are simulated and use generic data, following the recommended practices of [Stripe Docs](https://stripe.com/docs/testing ). If you have already configured payment management according to your region, then skip the simulation. It is recommended not to skip this step unless you are certain and take responsibility for the respective movements or transactions you generate. This project is purely demonstrative to showcase how a Python implementation works. We are not responsible for any misunderstandings or mismanagement. For more information: [Click here.](https://ecommerce-data-analysis.vercel.app/user_agreements.html)
 
 #### 2. Clone the implementation repository
 ```bash
@@ -60,7 +64,7 @@ The application should now be accessible at http://localhost:8000.
 ### Conclusion:
 
 #### Known Issues:
-- **Performance Latency**: Occasionally, high Azure instance loads result in significant latency. To address this, I plan to migrate the project to a different platform in the future, thereby improving performance. [DONE: migration successfully to Vercel].
+- **Performance Latency**: Occasionally, high Azure instance loads result in significant latency. To address this, I plan to migrate the project to a different platform in the future, thereby improving performance. [DONE: migrated to Vercel](https://github.com/imprvhub/ecommerce-data-analysis/releases/tag/v4.0.0).
 
 #### Achievements
 
