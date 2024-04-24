@@ -32,14 +32,6 @@ db = pymysql.connect(**db_config)
 
 UNKNOWN_USER = "Unknown User"
 
-
-@app.route("/user_agreements.html")
-def user_agreements():
-    """
-    Render the user agreements page.
-    """
-    return render_template("user_agreements.html")
-
 @app.route("/", methods=["GET"])    
 def render_index():
     """
